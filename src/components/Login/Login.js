@@ -14,7 +14,7 @@ const Login = () => {
   const { client_id, client_secret, redirect_uri } = state;
   const loginLink = `https://github.com/login/oauth/authorize?scope=user&client_id=${client_id}&redirect_uri=${redirect_uri}`;
 
-  useEffect(() => {
+  useEffect(async () => {
     // After requesting Github access, Github redirects back to your app with a code parameter
     const url = window.location.href;
     const hasCode = url.includes("?code=");
@@ -33,20 +33,18 @@ const Login = () => {
       };
       const proxy_url = state.proxy_url;
 
-      axios
-        .post(proxy_url, requestData)
-        .then(({ data }) => {
-          dispatch({
-            type: authTypes.LOGIN,
-            payload: { user: data, isLoggedIn: true },
-          });
-        })
-        .catch((error) => {
-          setData({
-            isLoading: false,
-            errorMessage: "Sorry! Login failed",
-          });
+      try {
+        const { data } = await axios.post(proxy_url, requestData);
+        dispatch({
+          type: authTypes.LOGIN,
+          payload: { user: data, isLoggedIn: true },
         });
+      } catch (error) {
+        setData({
+          isLoading: false,
+          errorMessage: "Sorry! Login failed",
+        });
+      }
     }
     // eslint-disable-next-line
   }, [state, dispatch, data]);
