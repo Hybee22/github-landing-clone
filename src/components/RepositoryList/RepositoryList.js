@@ -76,7 +76,7 @@ const RepoItem = ({ repo }) => {
           </RepoExtraInfo>
         </RepoInfo>
         <RepoButtons>
-          <Button type="button">
+          {/* <Button type="button">
             <span>
               <FiStar
                 style={{ marginLeft: "5px", fontSize: "14px", color: "grey" }}
@@ -86,7 +86,7 @@ const RepoItem = ({ repo }) => {
             <span>
               <FaCaretDown style={{ fontSize: "14px" }} />
             </span>
-          </Button>
+          </Button> */}
           {/* <Button type="button">
           </Button> */}
         </RepoButtons>
