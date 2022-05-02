@@ -79,16 +79,16 @@ const RepoItem = ({ repo }) => {
           <Button type="button">
             <span>
               <FiStar
-                style={{ marginLeft: "2px", fontSize: "14px", color: "grey" }}
+                style={{ marginLeft: "5px", fontSize: "14px", color: "grey" }}
               />
             </span>
             <ButtonText>Star</ButtonText>
-          </Button>
-          <Button type="button">
             <span>
-              <FaCaretDown style={{ marginLeft: "2px", fontSize: "14px" }} />
+              <FaCaretDown style={{ fontSize: "14px" }} />
             </span>
           </Button>
+          {/* <Button type="button">
+          </Button> */}
         </RepoButtons>
       </RepoItemContainer>
       <Divider />
@@ -319,7 +319,7 @@ const Pill = styled.span`
 `;
 
 const RepoButtons = styled.div`
-  display: flex;
+  /* display: flex; */
 `;
 
 export default RepositoryList;
