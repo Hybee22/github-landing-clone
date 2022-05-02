@@ -7,8 +7,6 @@ import ProtectedRoute from "./components/ProtectedRoute";
 function App() {
   const auth = useSelector((state) => state.auth);
 
-  console.log(auth);
-
   return (
     <div className="font-face">
       <Router>
@@ -17,7 +15,6 @@ function App() {
 
           {["/"].map((path, index) => (
             <Route
-              exact
               path={path}
               key={index}
               element={
