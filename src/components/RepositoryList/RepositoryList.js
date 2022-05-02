@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components/macro";
-import { FiBook } from "react-icons/fi";
+import { FiBook, FiStar } from "react-icons/fi";
 import { FaCaretDown } from "react-icons/fa";
 import axios from "axios";
 import { useSelector } from "react-redux";
@@ -77,7 +77,12 @@ const RepoItem = ({ repo }) => {
         </RepoInfo>
         <RepoButtons>
           <Button type="button">
-            <ButtonText>Type</ButtonText>
+            <span>
+              <FiStar
+                style={{ marginLeft: "2px", fontSize: "14px", color: "grey" }}
+              />
+            </span>
+            <ButtonText>Star</ButtonText>
           </Button>
           <Button type="button">
             <span>
@@ -313,6 +318,8 @@ const Pill = styled.span`
   border-radius: 50%;
 `;
 
-const RepoButtons = styled.div``;
+const RepoButtons = styled.div`
+  display: flex;
+`;
 
 export default RepositoryList;
