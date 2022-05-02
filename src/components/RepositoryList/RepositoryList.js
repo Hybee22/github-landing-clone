@@ -35,7 +35,7 @@ const SearchBar = ({ repos, setRepos, setShowLoading }) => {
       });
       const sortedFiltered = filtered.sort(compareFunc);
       setTimeout(() => setShowLoading(false), 500);
-      return setRepos(sortedFiltered);
+      setRepos(sortedFiltered);
     }
     // eslint-disable-next-line
   }, [searchText, setRepos, setShowLoading]);
@@ -75,7 +75,16 @@ const RepoItem = ({ repo }) => {
             </RepoLastUpdated>
           </RepoExtraInfo>
         </RepoInfo>
-        <RepoButtons></RepoButtons>
+        <RepoButtons>
+          <Button type="button">
+            <ButtonText>Type</ButtonText>
+          </Button>
+          <Button type="button">
+            <span>
+              <FaCaretDown style={{ marginLeft: "2px", fontSize: "14px" }} />
+            </span>
+          </Button>
+        </RepoButtons>
       </RepoItemContainer>
       <Divider />
     </>
@@ -147,8 +156,6 @@ const RepositoryList = () => {
           repos &&
           repos.map((repo) => <RepoItem repo={repo} key={repo.id} />)}
       </RepoContainer>
-
-      {/* <Divider /> */}
     </Container>
   );
 };
