@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import GithubIcon from "mdi-react/GithubIcon";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
+import history from "../../history/index.js";
 import { authTypes } from "../../features/auth/authSlice";
 
 const Login = () => {
@@ -39,6 +39,10 @@ const Login = () => {
           type: authTypes.LOGIN,
           payload: { user: data, isLoggedIn: true },
         });
+        if (data.login) {
+          history.push("/");
+          window.location.replace("/");
+        }
       } catch (error) {
         setData({
           isLoading: false,
@@ -49,9 +53,9 @@ const Login = () => {
     // eslint-disable-next-line
   }, [state, dispatch, data]);
 
-  if (state.isLoggedIn) {
-    return <Navigate to="/" />;
-  }
+  // if (state.isLoggedIn) {
+  //   return <Navigate to="/" />;
+  // }
 
   return (
     <Wrapper>
